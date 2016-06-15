@@ -2,7 +2,7 @@ FROM mweber/erlang:R16B02
 
 ENV NODE_NAME "antidote@127.0.0.1"
 ENV SHORT_NAME "false"
-ENV ANTIDOTE_REPO "https://github.com/SyncFree/antidote.git"
+ENV ANTIDOTE_REPO "https://github.com/mweberUKL/antidote.git"
 ENV ANTIDOTE_BRANCH "master"
 
 RUN set -xe \
