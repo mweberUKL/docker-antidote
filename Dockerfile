@@ -31,6 +31,8 @@ EXPOSE 8085 8086 8087 8099
 # Antidote RPC
 EXPOSE 9100
 
+VOLUME /opt/antidote/data
+
 ENTRYPOINT ["/entrypoint.sh"]
 
 #TODO not working, since /opt/antidote/bin/antidote attach not working anymore after changing node name
