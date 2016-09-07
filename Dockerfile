@@ -1,9 +1,9 @@
-FROM mweber/erlang:R16B02
+FROM erlang:19
 
 ENV NODE_NAME "antidote@127.0.0.1"
 ENV SHORT_NAME "false"
-ENV ANTIDOTE_REPO "https://github.com/mweberUKL/antidote.git"
-ENV ANTIDOTE_BRANCH "master"
+ENV ANTIDOTE_REPO "https://github.com/SyncFree/antidote.git"
+ENV ANTIDOTE_BRANCH "to_erlang19"
 
 RUN set -xe \
   && apt-get update \
@@ -13,8 +13,8 @@ RUN set -xe \
   && cd antidote \
   && git checkout $ANTIDOTE_BRANCH \
   && make rel \
-  && cp -R rel/antidote /opt/ \
-  && sed -e 's/pb_ip, "127\.0\.0\.1"/pb_ip, "0.0.0.0"/' -e '$i,{kernel, [{inet_dist_listen_min, 9100}, {inet_dist_listen_max, 9100}]}' /usr/src/antidote/rel/antidote/etc/app.config > /opt/antidote/etc/app.config \
+  && cp -R _build/default/rel/antidote /opt/ \
+  && sed -e 's/pb_ip, "127\.0\.0\.1"/pb_ip, "0.0.0.0"/' -e '$i,{kernel, [{inet_dist_listen_min, 9100}, {inet_dist_listen_max, 9100}]}' /usr/src/antidote/_build/default/rel/antidote/etc/app.config > /opt/antidote/etc/app.config \
   && rm -rf /usr/src/antidote /var/lib/apt/lists/*
 
 ADD ./start_and_attach.sh /opt/antidote/
