@@ -35,5 +35,4 @@ VOLUME /opt/antidote/data
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-#TODO not working, since /opt/antidote/bin/antidote attach not working anymore after changing node name
 CMD ["/opt/antidote/start_and_attach.sh"]
